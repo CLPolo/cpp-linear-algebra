@@ -1,0 +1,76 @@
+# Basic C++ Linear Algebra Library
+
+## Overview
+This is my implementation of a C++ linear algebra library. This library was created with three goals in mind:
+ 1. To learn and be introduced to relevant modern C++ functionality, namely [operator overloading](https://en.cppreference.com/w/cpp/language/operators), [function templates](https://en.cppreference.com/w/cpp/language/function_template) and [template specialization](https://en.cppreference.com/w/cpp/language/template_specialization), and [constructors](https://en.cppreference.com/w/cpp/language/constructor).
+
+ 2. To become familiar with the [GLSL specification](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.40.pdf) by aiming for this library adhere to it as best as I can.
+
+ 3. To develop a deeper understanding of both linear agebra and its application in graphics. 
+
+To these ends, this document and source comments will serve as a space to record what I have learned. Thus, concepts which may seem self evident to the experienced C++ and/or graphics programmer will be expounded on in detail. If there you, dear reader, notice errors in my implementation or understanding, then please feel free to reach out and let me know. 
+
+This library is heavily based on the [OpenGL Mathematics (glm)](https://github.com/g-truc/glm) library. It will be referenced often as it is (currently) my primary source for exposure to the relevant C++. 
+
+
+
+## Specification Requirements
+The GLSL specification supports a [wide variety of types](https://www.khronos.org/opengl/wiki/Data_Type_(GLSL)). For our purposes, we will implement the following:
+
+### Vectors
+| GLSL syntax | our syntax | type definition |
+|-------------|------------|-----------------|
+| bvec*n* | bVector*n* | a vector of booleans |
+| ivec*n* | iVector*n* | a vector of signed integers |
+| uvec*n* | uVector*n* | a vector of unsigned integers |
+| vec*n* | Vector*n* | a vector of floats |
+| dvec*n* | dVector*n* | a vector of doubles |
+
+The *n*'s above can be 2, 3, or 4, indicating the number of elements the vector is comprised of.
+
+### Matrices
+| GLSL syntax | our syntax | type definition |
+|-------------|------------|-----------------|
+| mat*n*x*m* | Matrix*n*x*m* | a matrix of floats with *n* columns and *m* rows |
+| mat*n* | Matrix*n* | shorthand for an *n* by *n* matrix of floats |
+| dmat*n*x*m* | dMatrix*n*x*m* | a matrix of doubles with *n* columns and *m* rows |
+| dmat*n* | dMatrix*n* | shorthand for an *n* by *n* matrix of doubles |
+
+The *n*'s and *m*'s above can be 2, 3, or 4, indicating the number of columns or rows comprising the matrix.
+
+
+### Type conversion and constructors
+Sections 4.1.10-.11 and sections 5.4.1-.2 of the specification describe the supported type conversions, initializers, and constructors. We aim to support the conversions and constructors listed in the specification. Some examples from section 5.4:
+
+    Vectors
+                      
+        vec3(float) // initializes each component of the vec3 with the float
+        vec4(ivec4) // makes a vec4 with component-wise conversion
+        vec4(mat2)  // the vec4 is column 0 followed by column 1
+
+        vec2(float, float)            // initializes a vec2 with 2 floats
+        ivec3(int, int, int)          // initializes an ivec3 with 3 ints
+        bvec4(int, int, float, float) // uses 4 Boolean conversions
+    
+        vec2(vec3) // drops the third component of a vec3
+        vec3(vec4) // drops the fourth component of a vec4
+    
+    Matrices
+
+        mat3(float) // initializes the diagonal of the matix to the float 
+                    // with all other elements set to zero
+
+        mat2(vec2, vec2);             // one column per argument
+        mat3(vec3, vec3, vec3);       // one column per argument
+        mat4(vec4, vec4, vec4, vec4); // one column per argument
+        mat3x2(vec2, vec2, vec2);     // one column per argument
+               
+        mat2(float, float,     // first column
+             float, float);    // second column
+    
+        mat2x3(vec2, float,    // first column
+               vec2, float);   // second column
+        
+        dmat2x4(dvec3, double, // first column
+                double, dvec3) // second column
+
