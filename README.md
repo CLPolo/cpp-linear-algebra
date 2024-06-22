@@ -74,3 +74,24 @@ Sections 4.1.10-.11 and sections 5.4.1-.2 of the specification describe the supp
         dmat2x4(dvec3, double, // first column
                 double, dvec3) // second column
 
+### Built-in Functions
+Section 8 of the GLSL specification lists the supported built-in functions. As per the specification, a general type will be used for functions which can take a vector of any dimension:
+
+| valid input arguments | general type syntax |
+|-----------------------|---------------------|
+| float, Vector2, Vector3, Vector4 | *genType* |
+| int, iVector2, iVector3, iVector4 | *genIType* |
+| uint, uVector2, uVector3, uVector4 | *genUType* |
+| bool, bVector2, bVector3, bVector4 | *genBType* |
+| double, dVector2, dVector3, dVector4 | *genDType* |
+
+We will be implementing the following functions:
+
+**Angles and Trigonometry**
+*The following are all component-wise operations*
+
+| Syntax | Description |
+|--------|-------------|
+| <pre lang="cpp">genType radians(genType *degrees*)</pre> | Converts degrees to radians i.e. $\displaystyle{\frac{\pi}{180}}\cdot degrees $ |
+```
+    
