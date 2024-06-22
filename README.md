@@ -1,14 +1,14 @@
 # Basic C++ Linear Algebra Library
 
 ## Overview
-This is my implementation of a C++ linear algebra library. This library was created with three goals in mind:
+This is my implementation of a C++ linear algebra library, currently a work in progress. This library was created with three goals in mind:
  1. To learn and be introduced to relevant modern C++ functionality, namely [operator overloading](https://en.cppreference.com/w/cpp/language/operators), [function templates](https://en.cppreference.com/w/cpp/language/function_template) and [template specialization](https://en.cppreference.com/w/cpp/language/template_specialization), and [constructors](https://en.cppreference.com/w/cpp/language/constructor).
 
  2. To become familiar with the [GLSL specification](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.40.pdf) by aiming for this library adhere to it as best as I can.
 
  3. To develop a deeper understanding of both linear agebra and its application in graphics. 
 
-To these ends, this document and source comments will serve as a space to record what I have learned. Thus, concepts which may seem self evident to the experienced C++ and/or graphics programmer will be expounded on in detail. If there you, dear reader, notice errors in my implementation or understanding, then please feel free to reach out and let me know. 
+To these ends, this document and source comments will serve as a space to record what I have learned. Thus, concepts which may seem self evident to the experienced C++ and/or graphics programmer will be expounded on in detail. If, dear reader, you notice errors in my implementation or understanding, then please feel free to reach out and let me know. 
 
 This library is heavily based on the [OpenGL Mathematics (glm)](https://github.com/g-truc/glm) library. It will be referenced often as it is (currently) my primary source for exposure to the relevant C++. 
 
