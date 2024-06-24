@@ -87,11 +87,22 @@ Section 8 of the GLSL specification lists the supported built-in functions. As p
 
 We will be implementing the following functions:
 
-**Angles and Trigonometry**
+**Angles and Trigonometry** - GLSL Spec Section 8.1
+
 *The following are all component-wise operations*
 
 | Syntax | Description |
 |--------|-------------|
 | <pre lang="cpp">genType radians(genType *degrees*)</pre> | Converts degrees to radians i.e. $\displaystyle{\frac{\pi}{180}}\cdot degrees $ |
-```
-    
+| <pre lang="cpp">genType degrees(genType *radians*)</pre> | Converts  radians to degrees i.e. $\displaystyle{\frac{180}{\pi}}\cdot radians $ |
+| <pre lang="cpp">genType sin(genType *angle*)<br>        cos(genType *angle*)<br>        tan(genType *angle*)</pre> | The standard sine, cosine, and tangent trigonometric functions. |
+| <pre lang="cpp"> genType asin(genType *x*)</pre> | Returns an angle, $\theta$, in radians, whose sine is *x* where <br>$\theta\in\displaystyle{\Big[-\frac{\pi}{2},\frac{\pi}{2}\Big]}$. Results are undefined if $\lvert x\rvert > 1$. |
+| <pre lang="cpp"> genType acos(genType *x*)</pre> | Returns an angle, $\theta$, in radians, whose cosine is *x* where <br>$\theta\in\displaystyle{\big[0,\pi\big]}$. Results are undefined if $\lvert x\rvert > 1$.  |
+| <pre lang="cpp"> genType atan(genType *y*, genType *x*)</pre> | Returns an angle, $\theta$, in radians, whose tangent is $y/x$. where $\theta\in\displaystyle{\big[-\pi,\pi\big]}$. The signs of $x$ and $y$ determine the quadrant of $\theta$. Results are undefined if $x$ and $y$ are both $0$.|
+| <pre lang="cpp"> genType atan(genType *y_over_x*)</pre> | Returns an angle, $\theta$, in radians, whose tangent is *y_over_x*. where $\theta\in\displaystyle{\Big[-\frac{\pi}{2},\frac{\pi}{2}\Big]}$. |
+| <pre lang="cpp"> genType sinh(genType *x*)</pre> | Returns the hyperbolic sine function: $\displaystyle{\frac{e^x-e^{-x}}{2}}$|
+| <pre lang="cpp"> genType cosh(genType *x*)</pre> | Returns the hyperbolic cosine function: $\displaystyle{\frac{e^x+e^{-x}}{2}}$|
+| <pre lang="cpp"> genType tanh(genType *x*)</pre> | Returns the hyperbolic tangent function: $\displaystyle{\frac{sinh(x)}{cosh(x)}}$|
+| <pre lang="cpp"> genType asinh(genType *x*)</pre> | Returns the inverse of sinh.|
+| <pre lang="cpp"> genType acosh(genType *x*)</pre> | Returns the non-negative inverse of cosh. Results are undefined if $x < 1$.|
+| <pre lang="cpp"> genType atanh(genType *x*)</pre> | Returns the inverse of tanh. Results are undefined if $\lvert x\rvert\ge1$.|
