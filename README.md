@@ -106,3 +106,17 @@ We will be implementing the following functions:
 | <pre lang="cpp"> genType asinh(genType *x*)</pre> | Returns the inverse of sinh.|
 | <pre lang="cpp"> genType acosh(genType *x*)</pre> | Returns the non-negative inverse of cosh. Results are undefined if $x < 1$.|
 | <pre lang="cpp"> genType atanh(genType *x*)</pre> | Returns the inverse of tanh. Results are undefined if $\lvert x\rvert\ge1$.|
+
+**Exponential Functions** - GLSL Spec Section 8.2
+
+*The following are all component-wise operations*
+
+| Syntax | Description |
+|--------|-------------|
+|<pre lang="cpp">genType pow(genType x, genType y)</pre>| Returns $x$ raised to the $y$ power, i.e., $x^y$.<br>Results are undefined if $x<0$.<br>Results are undefined if $x=0$ and $y<0$.|
+|<pre lang="cpp">genType exp(genType x)</pre>| Returns the natural exponentiation of $x$, i.e., $x^e$. |
+|<pre lang="cpp">genType log(genType x)</pre>| Returns the natural logarithm of $x$, i.e., returns the value $y$ which satisfies $x = e^y$.<br>Results are undefined is $x\leq0$. |
+|<pre lang="cpp">genType exp2(genType x)</pre>| Returns 2 raised to the $x$ power, i.e., $2^x$. |
+|<pre lang="cpp">genType log2(genType x)</pre>| Return the base-2 logarithm of $x$, i.e., the value $y$ which satisfies $x=2^y$.<br>Results are undefined if $x\leq0$.|
+|<pre lang="cpp"> genType sqrt( genType x)<br>genDType sqrt(genDType x)</pre>| Returns $\sqrt{x}$.<br>Results are undefined if $x<0$.|
+|<pre lang="cpp"> genType inversesqrt( genType x)<br>genDType inversesqrt(genDType x)</pre>| Returns $\displaystyle{\frac{1}{\sqrt{x}}}$.<br>Results are undefined if $x<0$.|
