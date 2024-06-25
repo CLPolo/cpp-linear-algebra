@@ -1,5 +1,5 @@
 # Basic C++ Linear Algebra Library
-
+This repository and accompanying documentation are works in progress.
 ## Overview
 This is my implementation of a C++ linear algebra library, currently a work in progress. This library was created with three goals in mind:
  1. To learn and be introduced to relevant modern C++ functionality, namely [operator overloading](https://en.cppreference.com/w/cpp/language/operators), [function templates](https://en.cppreference.com/w/cpp/language/function_template) and [template specialization](https://en.cppreference.com/w/cpp/language/template_specialization), and [constructors](https://en.cppreference.com/w/cpp/language/constructor).
