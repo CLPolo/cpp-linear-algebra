@@ -1,34 +1,36 @@
-#include "types.hpp"
-
-typedef Vector<2, float> Vector2;
-typedef Vector<2, double> dVector2; 
-typedef Vector<2, int> iVector2;
-typedef Vector<2, unsigned int> uVector2;
-typedef Vector<2, bool> bVector2;
+#include "../types.hpp"
 
 template <typename T> 
 struct Vector<2, T>
 {   
+    typedef T value_type;
+    typedef Vector<2, T> type;
+    typedef Vector<2, bool> bool_type;
+
     // Data
     union {T x, r, s;};
     union {T y, g, t;};
     
     // Setup type-agnostic function declarations
+    
+    // Get element count
+    typedef length_t length_type;
+    static constexpr length_type length(){return 2;}
+    
     // Element access
-    static length length(){return 2;}
-    constexpr T& operator[](length i);
-    constexpr T const& operator[](length i) const;
+    constexpr T& operator[](length_type i);
+    constexpr T const& operator[](length_type i) const;
 
     // Constructors -- Implicit
-    constexpr Vector() default;
-    constexpr Vector(Vector const& v) default;
+    constexpr Vector() = default;                // default constructor: https://en.cppreference.com/w/cpp/language/default_constructor
+    constexpr Vector(Vector const& v) = default; // copy constructor: https://en.cppreference.com/w/cpp/language/copy_constructor
     constexpr Vector(Vector<2, T> const& v);
 
     // Constructors -- Explicit
     constexpr explicit Vector(T scalar);
     constexpr Vector(T x, T y);
 
-    // Constructors -- conversion
+    // Constructors -- conversion -- https://en.cppreference.com/w/cpp/language/converting_constructor
     template <typename U>
     constexpr explicit Vector(Vector<1, U> const& v);
 
@@ -45,15 +47,15 @@ struct Vector<2, T>
     template<typename A, typename B>
     constexpr Vector(Vector<1, A> const&  x, Vector<1, B> const& y);
 
-    // Constructors -- explicit conversion of off-type single vector arguments
+    // Constructors -- explicit conversion of off-type single vector arguments    
+    template<typename U>
+    constexpr Vector(Vector<2, U> const& v);
+
     template<typename U>
     constexpr Vector(Vector<3, U> const& v);
 
     template<typename U>
     constexpr Vector(Vector<4, U> const& v);
-
-    template<typename U>
-    constexpr Vector(Vector<2, U> const& v);
 
     // Swizzle?? TODO?
 
