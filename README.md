@@ -107,7 +107,7 @@ We will be implementing the following functions:
 | <pre lang="cpp"> genType acosh(genType *x*)</pre> | Returns the non-negative inverse of cosh. Results are undefined if $x < 1$.|
 | <pre lang="cpp"> genType atanh(genType *x*)</pre> | Returns the inverse of tanh. Results are undefined if $\lvert x\rvert\ge1$.|
 
-**Exponential Functions** - GLSL Spec Section 8.2
+<br>**Exponential Functions** - GLSL Spec Section 8.2
 
 *The following are all component-wise operations*
 
@@ -120,3 +120,18 @@ We will be implementing the following functions:
 |<pre lang="cpp">genType log2(genType x)</pre>| Return the base-2 logarithm of $x$, i.e., the value $y$ which satisfies $x=2^y$.<br>Results are undefined if $x\leq0$.|
 |<pre lang="cpp"> genType sqrt( genType x)<br>genDType sqrt(genDType x)</pre>| Returns $\sqrt{x}$.<br>Results are undefined if $x<0$.|
 |<pre lang="cpp"> genType inversesqrt( genType x)<br>genDType inversesqrt(genDType x)</pre>| Returns $\displaystyle{\frac{1}{\sqrt{x}}}$.<br>Results are undefined if $x<0$.|
+
+<br>**Common Functions** - GLSL Spec Section 8.3
+
+*The following are all component-wise operations*
+| Syntax | Description |
+|--------|-------------|  
+|<pre lang="cpp"> genType abs(genType x)<br>genDType abs(genDType x)<br>genIType abs(genIType x)</pre>| |
+|<pre lang="cpp"> genType sign(genType x)<br>genDType sign(genDType x)<br>genIType sign(genIType x)</pre>| |
+|<pre lang="cpp"> genType floor(genType x)<br>genDType floor(genDType x)</pre>| |
+|<pre lang="cpp"> genType trunc(genType x)<br>genDType trunc(genDType x)</pre>| |
+|<pre lang="cpp"> genType round(genType x)<br>genDType round(genDType x)</pre>| |
+|<pre lang="cpp"> genType roundEven(genType x)<br>genDType roundEven(genDType x)</pre>| |
+|<pre lang="cpp"> genType ceil(genType x)<br>genDType ceil(genDType x)</pre>| |
+|<pre lang="cpp"> genType fract(genType x)<br>genDType fract(genDType x)</pre>| |
+|<pre lang="cpp"> genType mod(genType x, float y)<br> genType mod(genType x, genType y)<br>genDType mod(genDType x, double y)<br>genDType mod(genDType x, genDType y)</pre>| |
