@@ -63,7 +63,7 @@ struct Vector<2, T>
     template<typename U>
     constexpr Vector<2, T>& operator=(Vector<2, U> const& v);
     
-    // +=
+    // Unary arithmetic operators:  +=
     template<typename U>
     constexpr Vector<2, T>& operator+=(U scalar);
     template<typename U>
@@ -71,7 +71,7 @@ struct Vector<2, T>
     template<typename U>
     constexpr Vector<2, T>& operator+=(Vector<2, U> const& v);
 
-    // -=
+    // Unary arithmetic operators:  -=
     template<typename U>
     constexpr Vector<2, T>& operator-=(U scalar);
     template<typename U>
@@ -79,7 +79,7 @@ struct Vector<2, T>
     template<typename U>
     constexpr Vector<2, T>& operator-=(Vector<2, U> const& v);
 
-    // *=
+    // Unary arithmetic operators:  *=
     template<typename U>
     constexpr Vector<2, T>& operator*=(U scalar);
     template<typename U>
@@ -87,7 +87,7 @@ struct Vector<2, T>
     template<typename U>
     constexpr Vector<2, T>& operator*=(Vector<2, U> const& v);
 
-    // /=
+    // Unary arithmetic operators:  /=
     template<typename U>
     constexpr Vector<2, T>& operator/=(U scalar);
     template<typename U>
@@ -96,87 +96,95 @@ struct Vector<2, T>
     constexpr Vector<2, T>& operator/=(Vector<2, U> const& v);
 
     // increment and decrement operators
-    constexpr Vector<2, T> & operator++();
+    constexpr Vector<2, T> & operator++();  //prefix
     constexpr Vector<2, T> & operator--();
+    constexpr Vector<2, T> operator++(int); //postfix
     constexpr Vector<2, T> operator++(int);
-    constexpr Vector<2, T> operator++(int);
 
-    // unary operators
-    template<typename T>
-    constexpr Vector<2, T> operator+(Vector<2, T> const& v);
-    constexpr Vector<2, T> operator-(Vector<2, T> const& v);
-
-    // binary operators
-    // +
-    template<typename T>
-    constexpr Vector<2, T> operator+(Vector<2, T> const& v, T scalar);
-    template<typename T>
-    constexpr Vector<2, T> operator+(Vector<2, T> const& v1, Vector<1, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator+(T scalar, Vector<2, T> const& v);
-    template<typename T>
-    constexpr Vector<2, T> operator+(Vector<1, T> const& v1, Vector<2, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator+(Vector<2, T> const& v1, Vector<2, T> const& v2);
-
-    // -
-    template<typename T>
-    constexpr Vector<2, T> operator-(Vector<2, T> const& v, T scalar);
-    template<typename T>
-    constexpr Vector<2, T> operator-(Vector<2, T> const& v1, Vector<1, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator-(T scalar, Vector<2, T> const& v);
-    template<typename T>
-    constexpr Vector<2, T> operator-(Vector<1, T> const& v1, Vector<2, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator-(Vector<2, T> const& v1, Vector<2, T> const& v2);
-
-    // *
-    template<typename T>
-    constexpr Vector<2, T> operator*(Vector<2, T> const& v, T scalar);
-    template <typename T>
-    constexpr Vector<2, T> operator*(Vector<2, T> const& v1, Vector<1, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator*(T scalar, Vector<2, T> const& v);
-    template<typename T>
-    constexpr Vector<2, T> operator*(Vector<1, T> const& v1, Vector<2, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator*(Vector<2, T> const& v1, Vector<2, T> const& v2);
-
-    // /
-    template<typename T>
-    constexpr Vector<2, T> operator/(Vector<2, T> const& v, T scalar);
-    template <typename T>
-    constexpr Vector<2, T> operator/(Vector<2, T> const& v1, Vector<1, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator/(T scalar, Vector<2, T> const& v);
-    template<typename T>
-    constexpr Vector<2, T> operator/(Vector<1, T> const& v1, Vector<2, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator/(Vector<2, T> const& v1, Vector<2, T> const& v2);
-
-    // %
-    template<typename T>
-    constexpr Vector<2, T> operator%(Vector<2, T> const& v, T scalar);
-    template <typename T>
-    constexpr Vector<2, T> operator%(Vector<2, T> const& v1, Vector<1, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator%(T scalar, Vector<2, T> const& v);
-    template<typename T>
-    constexpr Vector<2, T> operator%(Vector<1, T> const& v1, Vector<2, T> const& v2);
-    template<typename T>
-    constexpr Vector<2, T> operator%(Vector<2, T> const& v1, Vector<2, T> const& v2);
-
-    // Boolean operators
-    template<typename T>
-    constexpr bool operator==(Vector<2, T> const& v1, Vector2<2, T> const& v2);
-    template<typename T>
-    constexpr bool operator!=(Vector<2, T> const& v1, Vector2<2, T> const& v2);
-    template<typename T>
-    constexpr bool operator&&(Vector<2, T> const& v1, Vector2<2, T> const& v2);
-    template<typename T>
-    constexpr bool operator||(Vector<2, T> const& v1, Vector2<2, T> const& v2);
+    // Unary bitwise operators:  %=
+    template<typename U>
+    constexpr Vector<2, T>& operator%=(U scalar);
+    template<typename U>
+    constexpr Vector<2, T>& operator%=(Vector<1, U> const& v);
+    template<typename U>
+    constexpr Vector<2, T>& operator%=(Vector<2, U> const& v);
 };
 
+// unary operators
+template<typename T>
+constexpr Vector<2, T> operator+(Vector<2, T> const& v);
+template<typename T>
+constexpr Vector<2, T> operator-(Vector<2, T> const& v);
+
+// binary operators
+// +
+template<typename T>
+constexpr Vector<2, T> operator+(Vector<2, T> const& v, T scalar);
+template<typename T>
+constexpr Vector<2, T> operator+(Vector<2, T> const& v1, Vector<1, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator+(T scalar, Vector<2, T> const& v);
+template<typename T>
+constexpr Vector<2, T> operator+(Vector<1, T> const& v1, Vector<2, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator+(Vector<2, T> const& v1, Vector<2, T> const& v2);
+
+// -
+template<typename T>
+constexpr Vector<2, T> operator-(Vector<2, T> const& v, T scalar);
+template<typename T>
+constexpr Vector<2, T> operator-(Vector<2, T> const& v1, Vector<1, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator-(T scalar, Vector<2, T> const& v);
+template<typename T>
+constexpr Vector<2, T> operator-(Vector<1, T> const& v1, Vector<2, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator-(Vector<2, T> const& v1, Vector<2, T> const& v2);
+
+// *
+template<typename T>
+constexpr Vector<2, T> operator*(Vector<2, T> const& v, T scalar);
+template <typename T>
+constexpr Vector<2, T> operator*(Vector<2, T> const& v1, Vector<1, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator*(T scalar, Vector<2, T> const& v);
+template<typename T>
+constexpr Vector<2, T> operator*(Vector<1, T> const& v1, Vector<2, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator*(Vector<2, T> const& v1, Vector<2, T> const& v2);
+
+// /
+template<typename T>
+constexpr Vector<2, T> operator/(Vector<2, T> const& v, T scalar);
+template <typename T>
+constexpr Vector<2, T> operator/(Vector<2, T> const& v1, Vector<1, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator/(T scalar, Vector<2, T> const& v);
+template<typename T>
+constexpr Vector<2, T> operator/(Vector<1, T> const& v1, Vector<2, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator/(Vector<2, T> const& v1, Vector<2, T> const& v2);
+
+// %
+template<typename T>
+constexpr Vector<2, T> operator%(Vector<2, T> const& v, T scalar);
+template <typename T>
+constexpr Vector<2, T> operator%(Vector<2, T> const& v1, Vector<1, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator%(T scalar, Vector<2, T> const& v);
+template<typename T>
+constexpr Vector<2, T> operator%(Vector<1, T> const& v1, Vector<2, T> const& v2);
+template<typename T>
+constexpr Vector<2, T> operator%(Vector<2, T> const& v1, Vector<2, T> const& v2);
+
+// Boolean operators
+template<typename T>
+constexpr bool operator==(Vector<2, T> const& v1, Vector<2, T> const& v2);
+template<typename T>
+constexpr bool operator!=(Vector<2, T> const& v1, Vector<2, T> const& v2);
+template<typename T>
+constexpr Vector<2, bool> operator&&(Vector<2, T> const& v1, Vector<2, T> const& v2);
+template<typename T>
+constexpr Vector<2, bool> operator||(Vector<2, T> const& v1, Vector<2, T> const& v2);
 
 #include "vector2.inl"
