@@ -1,7 +1,7 @@
 # Basic C++ Linear Algebra Library
-
+This repository and accompanying documentation are works in progress.
 ## Overview
-This is my implementation of a C++ linear algebra library, currently a work in progress. This library was created with three goals in mind:
+This is my implementation of a basic linear algebra library, written in C++. This library was created with three goals in mind:
  1. To learn and be introduced to relevant modern C++ functionality, namely [operator overloading](https://en.cppreference.com/w/cpp/language/operators), [function templates](https://en.cppreference.com/w/cpp/language/function_template) and [template specialization](https://en.cppreference.com/w/cpp/language/template_specialization), and [constructors](https://en.cppreference.com/w/cpp/language/constructor).
 
  2. To become familiar with the [GLSL specification](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.40.pdf) by aiming for this library adhere to it as best as I can.
@@ -130,6 +130,7 @@ We will be implementing the following functions:
 *The following are all component-wise operations*
 | Syntax | Description |
 |--------|-------------|  
+<<<<<<< HEAD
 |<pre lang="cpp">genFtype **abs**(genFtype x)<br>genDType **abs**(genDType x)<br>genIType **abs**(genIType x)</pre>| Returns $x$ if $x \geq 0$, otherwise returns $-x$.|
 |<pre lang="cpp">genFtype **sign**(genFtype x)<br>genDType **sign**(genDType x)<br>genIType **sign**(genIType x)</pre>| Returns $1.0$ if $x > 0$,<br>Returns $0.0$ if $x = 0$,<br> Returns $-1.0$ if $x < 0$.|
 |<pre lang="cpp">genFtype **floor**(genFtype x)<br>genDType **floor**(genDType x)</pre>| Returns the integer $i \in \mathbb{Z}$ such that $i \leq x$. |
@@ -186,3 +187,14 @@ We will be implementing the following functions:
 
 **Vector Relational Functions** - [GLSL Spec Section 8.7](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#vector-relational-functions)
 
+=======
+|<pre lang="cpp"> genType abs(genType x)<br>genDType abs(genDType x)<br>genIType abs(genIType x)</pre>| |
+|<pre lang="cpp"> genType sign(genType x)<br>genDType sign(genDType x)<br>genIType sign(genIType x)</pre>| |
+|<pre lang="cpp"> genType floor(genType x)<br>genDType floor(genDType x)</pre>| |
+|<pre lang="cpp"> genType trunc(genType x)<br>genDType trunc(genDType x)</pre>| |
+|<pre lang="cpp"> genType round(genType x)<br>genDType round(genDType x)</pre>| |
+|<pre lang="cpp"> genType roundEven(genType x)<br>genDType roundEven(genDType x)</pre>| |
+|<pre lang="cpp"> genType ceil(genType x)<br>genDType ceil(genDType x)</pre>| |
+|<pre lang="cpp"> genType fract(genType x)<br>genDType fract(genDType x)</pre>| |
+|<pre lang="cpp"> genType mod(genType x, float y)<br> genType mod(genType x, genType y)<br>genDType mod(genDType x, double y)<br>genDType mod(genDType x, genDType y)</pre>| |
+>>>>>>> f1de797031b6e49f378aa9a2eb57f7508f2b835a
