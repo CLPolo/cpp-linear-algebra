@@ -93,19 +93,19 @@ We will be implementing the following functions:
 
 | Syntax | Description |
 |--------|-------------|
-| <pre lang="cpp">genFtype radians(genFtype *degrees*)</pre> | Converts degrees to radians i.e. $\displaystyle{\frac{\pi}{180}}\cdot degrees $ |
-| <pre lang="cpp">genFtype degrees(genFtype *radians*)</pre> | Converts  radians to degrees i.e. $\displaystyle{\frac{180}{\pi}}\cdot radians $ |
-| <pre lang="cpp">genFtype sin(genFtype *angle*)<br>        cos(genFtype *angle*)<br>        tan(genFtype *angle*)</pre> | The standard sine, cosine, and tangent trigonometric functions. |
-| <pre lang="cpp"> genFtype asin(genFtype *x*)</pre> | Returns an angle, $\theta$, in radians, whose sine is *x* where <br>$\theta\in\displaystyle{\Big[-\frac{\pi}{2},\frac{\pi}{2}\Big]}$. Results are undefined if $\lvert x\rvert > 1$. |
-| <pre lang="cpp"> genFtype acos(genFtype *x*)</pre> | Returns an angle, $\theta$, in radians, whose cosine is *x* where <br>$\theta\in\displaystyle{\big[0,\pi\big]}$. Results are undefined if $\lvert x\rvert > 1$.  |
-| <pre lang="cpp"> genFtype atan(genFtype *y*, genFtype *x*)</pre> | Returns an angle, $\theta$, in radians, whose tangent is $y/x$. where $\theta\in\displaystyle{\big[-\pi,\pi\big]}$. The signs of $x$ and $y$ determine the quadrant of $\theta$. Results are undefined if $x$ and $y$ are both $0$.|
-| <pre lang="cpp"> genFtype atan(genFtype *y_over_x*)</pre> | Returns an angle, $\theta$, in radians, whose tangent is *y_over_x*. where $\theta\in\displaystyle{\Big[-\frac{\pi}{2},\frac{\pi}{2}\Big]}$. |
-| <pre lang="cpp"> genFtype sinh(genFtype *x*)</pre> | Returns the hyperbolic sine function: $\displaystyle{\frac{e^x-e^{-x}}{2}}$|
-| <pre lang="cpp"> genFtype cosh(genFtype *x*)</pre> | Returns the hyperbolic cosine function: $\displaystyle{\frac{e^x+e^{-x}}{2}}$|
-| <pre lang="cpp"> genFtype tanh(genFtype *x*)</pre> | Returns the hyperbolic tangent function: $\displaystyle{\frac{sinh(x)}{cosh(x)}}$|
-| <pre lang="cpp"> genFtype asinh(genFtype *x*)</pre> | Returns the inverse of sinh.|
-| <pre lang="cpp"> genFtype acosh(genFtype *x*)</pre> | Returns the non-negative inverse of cosh. Results are undefined if $x < 1$.|
-| <pre lang="cpp"> genFtype atanh(genFtype *x*)</pre> | Returns the inverse of tanh. Results are undefined if $\lvert x\rvert\ge1$.|
+| <pre lang="cpp">genFtype **radians**(genFtype *degrees*)</pre> | Converts degrees to radians i.e. $\displaystyle{\frac{\pi}{180}}\cdot degrees $ |
+| <pre lang="cpp">genFtype **degrees**(genFtype *radians*)</pre> | Converts  radians to degrees i.e. $\displaystyle{\frac{180}{\pi}}\cdot radians $ |
+| <pre lang="cpp">genFtype **sin**(genFtype *angle*)<br>         **cos**(genFtype *angle*)<br>         **tan**(genFtype *angle*)</pre> | The standard sine, cosine, and tangent trigonometric functions. |
+| <pre lang="cpp">genFtype **asin**(genFtype *x*)</pre> | Returns an angle, $\theta$, in radians, whose sine is *x* where <br>$\theta\in\displaystyle{\Big[-\frac{\pi}{2},\frac{\pi}{2}\Big]}$. Results are undefined if $\lvert x\rvert > 1$. |
+| <pre lang="cpp">genFtype **acos**(genFtype *x*)</pre> | Returns an angle, $\theta$, in radians, whose cosine is *x* where <br>$\theta\in\displaystyle{\big[0,\pi\big]}$. Results are undefined if $\lvert x\rvert > 1$.  |
+| <pre lang="cpp">genFtype **atan**(genFtype *y*,genFtype *x*)</pre> | Returns an angle, $\theta$, in radians, whose tangent is $y/x$. where $\theta\in\displaystyle{\big[-\pi,\pi\big]}$. The signs of $x$ and $y$ determine the quadrant of $\theta$. Results are undefined if $x$ and $y$ are both $0$.|
+| <pre lang="cpp">genFtype **atan**(genFtype *y_over_x*)</pre> | Returns an angle, $\theta$, in radians, whose tangent is *y_over_x*. where $\theta\in\displaystyle{\Big[-\frac{\pi}{2},\frac{\pi}{2}\Big]}$. |
+| <pre lang="cpp">genFtype **sinh**(genFtype *x*)</pre> | Returns the hyperbolic sine function: $\displaystyle{\frac{e^x-e^{-x}}{2}}$|
+| <pre lang="cpp">genFtype **cosh**(genFtype *x*)</pre> | Returns the hyperbolic cosine function: $\displaystyle{\frac{e^x+e^{-x}}{2}}$|
+| <pre lang="cpp">genFtype **tanh**(genFtype *x*)</pre> | Returns the hyperbolic tangent function: $\displaystyle{\frac{sinh(x)}{cosh(x)}}$|
+| <pre lang="cpp">genFtype **asinh**(genFtype *x*)</pre> | Returns the inverse of **sinh**.|
+| <pre lang="cpp">genFtype **acosh**(genFtype *x*)</pre> | Returns the non-negative inverse of **cosh**. Results are undefined if $x < 1$.|
+| <pre lang="cpp">genFtype **atanh**(genFtype *x*)</pre> | Returns the inverse of **tanh**. Results are undefined if $\lvert x\rvert\ge1$.|
 
 <br>
 
@@ -115,13 +115,13 @@ We will be implementing the following functions:
 
 | Syntax | Description |
 |--------|-------------|
-|<pre lang="cpp">genFtype pow(genFtype x, genFtype y)</pre>| Returns $x$ raised to the $y$ power, i.e., $x^y$.<br>Results are undefined if $x<0$.<br>Results are undefined if $x=0$ and $y<0$.|
-|<pre lang="cpp">genFtype exp(genFtype x)</pre>| Returns the natural exponentiation of $x$, i.e., $x^e$. |
-|<pre lang="cpp">genFtype log(genFtype x)</pre>| Returns the natural logarithm of $x$, i.e., returns the value $y$ which satisfies $x = e^y$.<br>Results are undefined is $x\leq0$. |
-|<pre lang="cpp">genFtype exp2(genFtype x)</pre>| Returns 2 raised to the $x$ power, i.e., $2^x$. |
-|<pre lang="cpp">genFtype log2(genFtype x)</pre>| Return the base-2 logarithm of $x$, i.e., the value $y$ which satisfies $x=2^y$.<br>Results are undefined if $x\leq0$.|
-|<pre lang="cpp"> genFtype sqrt( genFtype x)<br>genDType sqrt(genDType x)</pre>| Returns $\sqrt{x}$.<br>Results are undefined if $x<0$.|
-|<pre lang="cpp"> genFtype inversesqrt( genFtype x)<br>genDType inversesqrt(genDType x)</pre>| Returns $\displaystyle{\frac{1}{\sqrt{x}}}$.<br>Results are undefined if $x<0$.|
+|<pre lang="cpp">genFtype **pow**(genFtype x, genFtype y)</pre>| Returns $x$ raised to the $y$ power, i.e., $x^y$.<br>Results are undefined if $x<0$.<br>Results are undefined if $x=0$ and $y<0$.|
+|<pre lang="cpp">genFtype **exp**(genFtype x)</pre>| Returns the natural exponentiation of $x$, i.e., $x^e$. |
+|<pre lang="cpp">genFtype **log**(genFtype x)</pre>| Returns the natural logarithm of $x$, i.e., returns the value $y$ which satisfies $x = e^y$.<br>Results are undefined is $x\leq0$. |
+|<pre lang="cpp">genFtype **exp2**(genFtype x)</pre>| Returns 2 raised to the $x$ power, i.e., $2^x$. |
+|<pre lang="cpp">genFtype **log2**(genFtype x)</pre>| Return the base-2 logarithm of $x$, i.e., the value $y$ which satisfies $x=2^y$.<br>Results are undefined if $x\leq0$.|
+|<pre lang="cpp">genFtype **sqrt**(genFtype x)<br>genDType **sqrt**(genDType x)</pre>| Returns $\sqrt{x}$.<br>Results are undefined if $x<0$.|
+|<pre lang="cpp">genFtype **inversesqrt**(genFtype x)<br>genDType **inversesqrt**(genDType x)</pre>| Returns $\displaystyle{\frac{1}{\sqrt{x}}}$.<br>Results are undefined if $x<0$.|
 
 <br>
 
@@ -130,12 +130,59 @@ We will be implementing the following functions:
 *The following are all component-wise operations*
 | Syntax | Description |
 |--------|-------------|  
-|<pre lang="cpp"> genFtype abs(genFtype x)<br>genDType abs(genDType x)<br>genIType abs(genIType x)</pre>| |
-|<pre lang="cpp"> genFtype sign(genFtype x)<br>genDType sign(genDType x)<br>genIType sign(genIType x)</pre>| |
-|<pre lang="cpp"> genFtype floor(genFtype x)<br>genDType floor(genDType x)</pre>| |
-|<pre lang="cpp"> genFtype trunc(genFtype x)<br>genDType trunc(genDType x)</pre>| |
-|<pre lang="cpp"> genFtype round(genFtype x)<br>genDType round(genDType x)</pre>| |
-|<pre lang="cpp"> genFtype roundEven(genFtype x)<br>genDType roundEven(genDType x)</pre>| |
-|<pre lang="cpp"> genFtype ceil(genFtype x)<br>genDType ceil(genDType x)</pre>| |
-|<pre lang="cpp"> genFtype fract(genFtype x)<br>genDType fract(genDType x)</pre>| |
-|<pre lang="cpp"> genFtype mod(genFtype x, float y)<br> genFtype mod(genFtype x, genFtype y)<br>genDType mod(genDType x, double y)<br>genDType mod(genDType x, genDType y)</pre>| |
+|<pre lang="cpp">genFtype **abs**(genFtype x)<br>genDType **abs**(genDType x)<br>genIType **abs**(genIType x)</pre>| Returns $x$ if $x \geq 0$, otherwise returns $-x$.|
+|<pre lang="cpp">genFtype **sign**(genFtype x)<br>genDType **sign**(genDType x)<br>genIType **sign**(genIType x)</pre>| Returns $1.0$ if $x > 0$,<br>Returns $0.0$ if $x = 0$,<br> Returns $-1.0$ if $x < 0$.|
+|<pre lang="cpp">genFtype **floor**(genFtype x)<br>genDType **floor**(genDType x)</pre>| Returns the integer $i \in \mathbb{Z}$ such that $i \leq x$. |
+|<pre lang="cpp">genFtype **trunc**(genFtype x)<br>genDType **trunc**(genDType x)</pre>| Returns the integer $i \in \mathbb{Z}$ such that $\rvert i\lvert \leq \rvert x\lvert$. |
+|<pre lang="cpp">genFtype **round**(genFtype x)<br>genDType **round**(genDType x)</pre>| Returns the nearest integer $i \in \mathbb{Z}$ to $x$. <br> The result of $x = 0.5$ in this implementation will return the same value as **roundEven**|
+|<pre lang="cpp">genFtype **roundEven**(genFtype x)<br>genDType **roundEven**(genDType x)</pre>| Returns the nearest integer $i \in \mathbb{Z}$ to $x$. If $x = 0.5$, returns the nearest even integer. |
+|<pre lang="cpp">genFtype **ceil**(genFtype x)<br>genDType **ceil**(genDType x)</pre>| Returns the integer $i \in \mathbb{Z}$ such that $i \geq x$. |
+|<pre lang="cpp">genFtype **fract**(genFtype x)<br>genDType **fract**(genDType x)</pre>| Returns $x-$**floor**($x$). |
+|<pre lang="cpp">genFtype **mod**(genFtype x, float y)<br>genFtype **mod**(genFtype x, genFtype y)<br>genDType **mod**(genDType x, double y)<br>genDType **mod**(genDType x, genDType y)</pre>| Modulus. Returns $x - y \cdot$**floor**($x/y$). |
+|modf||
+|min||
+|max||
+|clamp||
+|mix||
+|mix||
+|step||
+|smoothstep||
+|isnan||
+|isinf||
+
+<br>
+
+**Geomentric Functions** - [GLSL Spec Section 8.5](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#geometric-functions)
+*These operate on vectors **as vectors** i.e. **not** component-wise.*
+
+| Syntax | Description |
+|--------|-------------|
+|length||
+|distance||
+|dot||
+|cross||
+|normalize||
+|faceforward||
+|reflect||
+|refract||
+
+<br>
+
+**Matrix Functions** - [GLSL Spec Section 8.6](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#matrix-functions)
+
+*The below functions apply to both float and double matrices, though only the floating point version is shown below*
+
+| Syntax | Description |
+|--------|-------------|
+|matrixCompMult||
+|outerProduct||
+|transpose||
+|determinant||
+|inverse||
+
+
+
+<br>
+
+**Vector Relational Functions** - [GLSL Spec Section 8.7](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#vector-relational-functions)
+
