@@ -177,3 +177,6 @@ struct Vector<2, T>
     template<typename T>
     constexpr bool operator||(Vector<2, T> const& v1, Vector2<2, T> const& v2);
 };
+
+
+#include "vector2.inl"
