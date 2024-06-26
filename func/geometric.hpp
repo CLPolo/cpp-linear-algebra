@@ -222,7 +222,7 @@ Vector3 cross(Vector3 a, Vector3 b)
     // see: https://en.wikipedia.org/wiki/Cross_product
     //------------------------------------------------------------------------------------
     
-    Vector3 a = Vector3();
+    Vector3 out = Vector3();
 
     return Vector3(a.y*b.z - a.z*b.y,
                    a.z*b.x - a.x*b.z,

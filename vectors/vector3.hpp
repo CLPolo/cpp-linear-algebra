@@ -317,3 +317,5 @@ struct Vector<3, T>
 
 	// template<typename T>
 	// constexpr Vector<3, T> operator~(Vector<3, T> const& v);
+
+#include "vector3.inl"
