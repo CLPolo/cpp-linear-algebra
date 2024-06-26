@@ -185,14 +185,3 @@ We will be implementing the following functions:
 <br>
 
 **Vector Relational Functions** - [GLSL Spec Section 8.7](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#vector-relational-functions)
-
-=======
-|<pre lang="cpp"> genType abs(genType x)<br>genDType abs(genDType x)<br>genIType abs(genIType x)</pre>| |
-|<pre lang="cpp"> genType sign(genType x)<br>genDType sign(genDType x)<br>genIType sign(genIType x)</pre>| |
-|<pre lang="cpp"> genType floor(genType x)<br>genDType floor(genDType x)</pre>| |
-|<pre lang="cpp"> genType trunc(genType x)<br>genDType trunc(genDType x)</pre>| |
-|<pre lang="cpp"> genType round(genType x)<br>genDType round(genDType x)</pre>| |
-|<pre lang="cpp"> genType roundEven(genType x)<br>genDType roundEven(genDType x)</pre>| |
-|<pre lang="cpp"> genType ceil(genType x)<br>genDType ceil(genDType x)</pre>| |
-|<pre lang="cpp"> genType fract(genType x)<br>genDType fract(genDType x)</pre>| |
-|<pre lang="cpp"> genType mod(genType x, float y)<br> genType mod(genType x, genType y)<br>genDType mod(genDType x, double y)<br>genDType mod(genDType x, genDType y)</pre>| |
