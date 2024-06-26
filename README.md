@@ -40,7 +40,7 @@ The *n*'s and *m*'s above can be 2, 3, or 4, indicating the number of columns or
 
 
 ### Type conversion and constructors
-Sections 4.1.10-.11 and sections 5.4.1-.2 of the specification describe the supported type conversions, initializers, and constructors. We aim to support the conversions and constructors listed in the specification. Some examples from section 5.4:
+Sections [4.1.10-.11](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#implicit-conversions) and sections [5.4.1-.2](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#constructors) of the specification describe the supported type conversions, initializers, and constructors. We aim to support the conversions and constructors listed in the specification. Some examples from section 5.4:
 
     Vectors
                       
@@ -75,7 +75,7 @@ Sections 4.1.10-.11 and sections 5.4.1-.2 of the specification describe the supp
                 double, dvec3) // second column
 
 ### Built-in Functions
-Section 8 of the GLSL specification lists the supported built-in functions. As per the specification, a general type will be used for functions which can take a vector of any dimension:
+[Section 8](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#built-in-functions) of the GLSL specification lists the supported built-in functions. As per the specification, a general type will be used for functions which can take a vector of any dimension:
 
 | valid input arguments | general type syntax |
 |-----------------------|---------------------|
@@ -87,7 +87,7 @@ Section 8 of the GLSL specification lists the supported built-in functions. As p
 
 We will be implementing the following functions:
 
-**Angles and Trigonometry** - GLSL Spec Section 8.1
+**Angles and Trigonometry** - [GLSL Spec Section 8.1](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#angle-and-trigonometry-functions)
 
 *The following are all component-wise operations*
 
@@ -107,7 +107,9 @@ We will be implementing the following functions:
 | <pre lang="cpp"> genFtype acosh(genFtype *x*)</pre> | Returns the non-negative inverse of cosh. Results are undefined if $x < 1$.|
 | <pre lang="cpp"> genFtype atanh(genFtype *x*)</pre> | Returns the inverse of tanh. Results are undefined if $\lvert x\rvert\ge1$.|
 
-<br>**Exponential Functions** - GLSL Spec Section 8.2
+<br>
+
+**Exponential Functions** - [GLSL Spec Section 8.2](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#exponential-functions)
 
 *The following are all component-wise operations*
 
@@ -121,7 +123,9 @@ We will be implementing the following functions:
 |<pre lang="cpp"> genFtype sqrt( genFtype x)<br>genDType sqrt(genDType x)</pre>| Returns $\sqrt{x}$.<br>Results are undefined if $x<0$.|
 |<pre lang="cpp"> genFtype inversesqrt( genFtype x)<br>genDType inversesqrt(genDType x)</pre>| Returns $\displaystyle{\frac{1}{\sqrt{x}}}$.<br>Results are undefined if $x<0$.|
 
-<br>**Common Functions** - GLSL Spec Section 8.3
+<br>
+
+**Common Functions** - [GLSL Spec Section 8.3](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html#common-functions)
 
 *The following are all component-wise operations*
 | Syntax | Description |
