@@ -130,7 +130,6 @@ We will be implementing the following functions:
 *The following are all component-wise operations*
 | Syntax | Description |
 |--------|-------------|  
-<<<<<<< HEAD
 |<pre lang="cpp">genFtype **abs**(genFtype x)<br>genDType **abs**(genDType x)<br>genIType **abs**(genIType x)</pre>| Returns $x$ if $x \geq 0$, otherwise returns $-x$.|
 |<pre lang="cpp">genFtype **sign**(genFtype x)<br>genDType **sign**(genDType x)<br>genIType **sign**(genIType x)</pre>| Returns $1.0$ if $x > 0$,<br>Returns $0.0$ if $x = 0$,<br> Returns $-1.0$ if $x < 0$.|
 |<pre lang="cpp">genFtype **floor**(genFtype x)<br>genDType **floor**(genDType x)</pre>| Returns the integer $i \in \mathbb{Z}$ such that $i \leq x$. |
@@ -197,4 +196,3 @@ We will be implementing the following functions:
 |<pre lang="cpp"> genType ceil(genType x)<br>genDType ceil(genDType x)</pre>| |
 |<pre lang="cpp"> genType fract(genType x)<br>genDType fract(genDType x)</pre>| |
 |<pre lang="cpp"> genType mod(genType x, float y)<br> genType mod(genType x, genType y)<br>genDType mod(genDType x, double y)<br>genDType mod(genDType x, genDType y)</pre>| |
->>>>>>> f1de797031b6e49f378aa9a2eb57f7508f2b835a
