@@ -14,10 +14,10 @@ typedef Vector<2, float> Vector2;
 typedef Vector<3, float> Vector3;
 typedef Vector<4, float> Vector4;
 
-typedef Vector1 genType;
-typedef Vector2 genType;
-typedef Vector3 genType;
-typedef Vector4 genType;
+typedef Vector1 genFType;
+typedef Vector2 genFType;
+typedef Vector3 genFType;
+typedef Vector4 genFType;
 
 // Define explicit and general vector types - doubles
 typedef Vector<1, double> dVector1;
