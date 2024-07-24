@@ -23,7 +23,7 @@ float length(genType v)
             case 0:
                 return_length += pow(v.x, 2);
                 break;
-            case 1;
+            case 1:
                 return_length += pow(v.y, 2);
                 break;
             case 2:
@@ -52,7 +52,7 @@ double length(genDType v)
             case 0:
                 return_length += pow(v.x, 2);
                 break;
-            case 1;
+            case 1:
                 return_length += pow(v.y, 2);
                 break;
             case 2:
@@ -82,7 +82,10 @@ float distance(genType p0, genType p1)
 }
 
 template <typename genDType>
-double distance(genDType p0, genDType p1) {return length(p0 - p1);}
+double distance(genDType p0, genDType p1)
+{
+    return length(p0 - p1);
+}
 
 // Returns the dot product of a and b
 template <typename genType>
@@ -107,7 +110,7 @@ float dot(genType a, genType b)
 
     while (i < a.length() && i < b.length())
     {
-        switch (i):
+        switch (i)
         {
             case 0:
                 return_dot += a.x*b.x;
@@ -149,7 +152,7 @@ double dot(genDType a, genDType b)
 
     while (i < a.length() && i < b.length())
     {
-        switch (i):
+        switch (i)
         {
             case 0:
                 return_dot += a.x*b.x;
