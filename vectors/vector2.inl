@@ -1,6 +1,4 @@
-#include "vector2.hpp"
-
-// Constructors -- Basic
+// Implicit basic constructors
 template<typename T>
 inline constexpr Vector<2, T>::Vector() 
     : x(0), y(0)
@@ -10,6 +8,8 @@ template <typename T>
 inline constexpr Vector<2, T>::Vector(Vector<2, T> const& v)
     : x(v.x), y(v.y)
 {}
+
+// Explicit basic constructors
 
 template<typename T>
 inline constexpr Vector<2, T>::Vector(T scalar)
@@ -21,14 +21,14 @@ inline constexpr Vector<2, T>::Vector(T _x, T _y)
     : x(_x), y(_y)
 {}
 
-// Constructors -- Scalar conversion 
-// static_cast: https://en.cppreference.com/w/cpp/language/static_cast
+// Scalar conversion Constructors
+
 template<typename T>
 template<typename U>
 inline constexpr Vector<2, T>::Vector(Vector<1, U> const& v)
     // initialize both elements of Vector to v.x via a member initializer list
     : x(static_cast<T>(v.x))
-    , y(static_cast<T>(v.x))
+    , y(static_cast<T>(v.x)) // static_cast: https://en.cppreference.com/w/cpp/language/static_cast
 {}
 
 template<typename T>
@@ -113,6 +113,15 @@ inline constexpr T const& Vector<2, T>::operator[](typename Vector<2, T>::length
 
 // Unary arithmetic operators:  =
 template <typename T>
+inline constexpr Vector<2, T> & Vector<2, T>::operator=(Vector<2, T> const& v)
+{   
+
+    this->x = v.x;
+    this->y = v.y;
+    return *this;
+}
+
+template <typename T>
 template <typename U>
 inline constexpr Vector<2, T> & Vector<2, T>::operator=(Vector<2, U> const& v)
 {   
@@ -124,6 +133,7 @@ inline constexpr Vector<2, T> & Vector<2, T>::operator=(Vector<2, U> const& v)
 
 
 // Unary arithmetic operators:  += 
+
 template <typename T>
 template <typename U>
 inline constexpr Vector<2, T> & Vector<2, T>::operator+=(U scalar)
@@ -153,6 +163,7 @@ inline constexpr Vector<2, T> & Vector<2, T>::operator+=(Vector<2, U> const& v)
 }
 
 // Unary arithmetic operators:  -= 
+
 template <typename T>
 template <typename U>
 inline constexpr Vector<2, T> & Vector<2, T>::operator-=(U scalar)
@@ -182,6 +193,7 @@ inline constexpr Vector<2, T> & Vector<2, T>::operator-=(Vector<2, U> const& v)
 }
 
 // Unary arithmetic operators:   *= 
+
 template <typename T>
 template <typename U>
 inline constexpr Vector<2, T> & Vector<2, T>::operator*=(U scalar)
@@ -211,6 +223,7 @@ inline constexpr Vector<2, T> & Vector<2, T>::operator*=(Vector<2, U> const& v)
 }
 
 // Unary arithmetic operators:  /= 
+
 template <typename T>
 template <typename U>
 inline constexpr Vector<2, T> & Vector<2, T>::operator/=(U scalar)
@@ -271,34 +284,34 @@ inline constexpr Vector<2, T> & Vector<2, T>::operator--(int)
     return result;
 }
 
-// Unary bit-wise operators:  %= 
-template <typename T>
-template <typename U>
-inline constexpr Vector<2, T> & Vector<2, T>::operator%=(U scalar)
-{   
+// // Unary bit-wise operators:  %= 
+// template <typename T>
+// template <typename U>
+// inline constexpr Vector<2, T> & Vector<2, T>::operator%=(U scalar)
+// {   
 
-    this->x %= static_cast<T>(scalar);
-    this->y %= static_cast<T>(scalar);
-    return *this;
-}
-template <typename T>
-template <typename U>
-inline constexpr Vector<2, T> & Vector<2, T>::operator%=(Vector<1, U> const& v)
-{   
+//     this->x %= static_cast<T>(scalar);
+//     this->y %= static_cast<T>(scalar);
+//     return *this;
+// }
+// template <typename T>
+// template <typename U>
+// inline constexpr Vector<2, T> & Vector<2, T>::operator%=(Vector<1, U> const& v)
+// {   
 
-    this->x %= static_cast<T>(v.x);
-    this->y %= static_cast<T>(v.x);
-    return *this;
-}
-template <typename T>
-template <typename U>
-inline constexpr Vector<2, T> & Vector<2, T>::operator%=(Vector<2, U> const& v)
-{   
+//     this->x %= static_cast<T>(v.x);
+//     this->y %= static_cast<T>(v.x);
+//     return *this;
+// }
+// template <typename T>
+// template <typename U>
+// inline constexpr Vector<2, T> & Vector<2, T>::operator%=(Vector<2, U> const& v)
+// {   
 
-    this->x %= static_cast<T>(v.x);
-    this->y %= static_cast<T>(v.y);
-    return *this;
-}
+//     this->x %= static_cast<T>(v.x);
+//     this->y %= static_cast<T>(v.y);
+//     return *this;
+// }
 
 // Unary operators
 template<typename T>
@@ -314,182 +327,199 @@ inline constexpr Vector<2, T> operator-(Vector<2, T> const& v)
 
 // Binary operators:    +
 template<typename T>
-inline constexpr Vector<2, T> operator+(Vector<2, T> const& v, T scalar)
+inline constexpr Vector<2, T> operator+(Vector<2, T> const& lhs, T rhs)
 {
-    return Vector<2, T>(v.x + scalar
-                        v.y + scalar);
+    return Vector<2, T>(lhs.x + rhs,
+                        lhs.y + rhs);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator+(Vector<2, T> const& v1, Vector<1, T> const& v2)
+inline constexpr Vector<2, T> operator+(Vector<2, T> const& lhs, Vector<1, T> const& rhs)
 {
-    return Vector<2, T>(v1.x + v2.x
-                        v1.y + v2.x);
+    return Vector<2, T>(lhs.x + rhs.x,
+                        lhs.y + rhs.x);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator+(T scalar, Vector<2, T> const& v)
+inline constexpr Vector<2, T> operator+(T lhs, Vector<2, T> const& v)
 {
-    return Vector<2, T>(scalar + v.x, 
-                        scalar + v.y);
+    return Vector<2, T>(lhs + v.x, 
+                        lhs + v.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator+(Vector<1, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator+(Vector<1, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x + v2.x
-                        v1.x + v2.y);
+    return Vector<2, T>(lhs.x + rhs.x,
+                        lhs.x + rhs.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator+(Vector<2, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator+(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x + v2.y
-                        v1.y + v2.y);
+    return Vector<2, T>(lhs.x + rhs.x,
+                        lhs.y + rhs.y);
 }
 
 // Binary operators:    -
 template<typename T>
-inline constexpr Vector<2, T> operator-(Vector<2, T> const& v, T scalar)
+inline constexpr Vector<2, T> operator-(Vector<2, T> const& lhs, T rhs)
 {
-    return Vector<2, T>(v.x - scalar
-                        v.y - scalar);
+    return Vector<2, T>(lhs.x - rhs,
+                        lhs.y - rhs);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator-(Vector<2, T> const& v1, Vector<1, T> const& v2)
+inline constexpr Vector<2, T> operator-(Vector<2, T> const& lhs, Vector<1, T> const& rhs)
 {
-    return Vector<2, T>(v1.x - v2.x
-                        v1.y - v2.x);
+    return Vector<2, T>(lhs.x - rhs.x,
+                        lhs.y - rhs.x);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator-(T scalar, Vector<2, T> const& v)
+inline constexpr Vector<2, T> operator-(T lhs, Vector<2, T> const& v)
 {
-    return Vector<2, T>(scalar - v.x, 
-                        scalar - v.y);
+    return Vector<2, T>(lhs - v.x, 
+                        lhs - v.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator-(Vector<1, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator-(Vector<1, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x - v2.x
-                        v1.x - v2.y);
+    return Vector<2, T>(lhs.x - rhs.x,
+                        lhs.x - rhs.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator-(Vector<2, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator-(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x - v2.y
-                        v1.y - v2.y);
+    return Vector<2, T>(lhs.x - rhs.x,
+                        lhs.y - rhs.y);
 }
 
 // Binary operators:    *
 template<typename T>
-inline constexpr Vector<2, T> operator*(Vector<2, T> const& v, T scalar)
+inline constexpr Vector<2, T> operator*(Vector<2, T> const& lhs, T rhs)
 {
-    return Vector<2, T>(v.x * scalar
-                        v.y * scalar);
+    return Vector<2, T>(lhs.x * rhs,
+                        lhs.y * rhs);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator*(Vector<2, T> const& v1, Vector<1, T> const& v2)
+inline constexpr Vector<2, T> operator*(Vector<2, T> const& lhs, Vector<1, T> const& rhs)
 {
-    return Vector<2, T>(v1.x * v2.x
-                        v1.y * v2.x);
+    return Vector<2, T>(lhs.x * rhs.x,
+                        lhs.y * rhs.x);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator*(T scalar, Vector<2, T> const& v)
+inline constexpr Vector<2, T> operator*(T lhs, Vector<2, T> const& v)
 {
-    return Vector<2, T>(scalar * v.x, 
-                        scalar * v.y);
+    return Vector<2, T>(lhs * v.x, 
+                        lhs * v.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator*(Vector<1, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator*(Vector<1, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x * v2.x
-                        v1.x * v2.y);
+    return Vector<2, T>(lhs.x * rhs.x,
+                        lhs.x * rhs.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator*(Vector<2, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator*(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x * v2.y
-                        v1.y * v2.y);
+    return Vector<2, T>(lhs.x * rhs.x,
+                        lhs.y * rhs.y);
 }
 
 // Binary operators:    /
 template<typename T>
-inline constexpr Vector<2, T> operator/(Vector<2, T> const& v, T scalar)
+inline constexpr Vector<2, T> operator/(Vector<2, T> const& lhs, T rhs)
 {
-    return Vector<2, T>(v.x / scalar
-                        v.y / scalar);
+    return Vector<2, T>(lhs.x / rhs,
+                        lhs.y / rhs);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator/(Vector<2, T> const& v1, Vector<1, T> const& v2)
+inline constexpr Vector<2, T> operator/(Vector<2, T> const& lhs, Vector<1, T> const& rhs)
 {
-    return Vector<2, T>(v1.x / v2.x
-                        v1.y / v2.x);
+    return Vector<2, T>(lhs.x / rhs.x,
+                        lhs.y / rhs.x);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator/(T scalar, Vector<2, T> const& v)
+inline constexpr Vector<2, T> operator/(T lhs, Vector<2, T> const& v)
 {
-    return Vector<2, T>(scalar / v.x, 
-                        scalar / v.y);
+    return Vector<2, T>(lhs / v.x, 
+                        lhs / v.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator/(Vector<1, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator/(Vector<1, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x / v2.x
-                        v1.x / v2.y);
+    return Vector<2, T>(lhs.x / rhs.x,
+                        lhs.x / rhs.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator/(Vector<2, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator/(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x / v2.y
-                        v1.y / v2.y);
+    return Vector<2, T>(lhs.x / rhs.x,
+                        lhs.y / rhs.y);
 }
 
 // Binary operators:    %
 template<typename T>
-inline constexpr Vector<2, T> operator%(Vector<2, T> const& v, T scalar)
+inline constexpr Vector<2, T> operator%(Vector<2, T> const& lhs, T rhs)
 {
-    return Vector<2, T>(v.x % scalar
-                        v.y % scalar);
+    return Vector<2, T>(lhs.x % rhs,
+                        lhs.y % rhs);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator%(Vector<2, T> const& v1, Vector<1, T> const& v2)
+inline constexpr Vector<2, T> operator%(Vector<2, T> const& lhs, Vector<1, T> const& rhs)
 {
-    return Vector<2, T>(v1.x % v2.x
-                        v1.y % v2.x);
+    return Vector<2, T>(lhs.x % rhs.x,
+                        lhs.y % rhs.x);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator%(T scalar, Vector<2, T> const& v)
+inline constexpr Vector<2, T> operator%(T lhs, Vector<2, T> const& v)
 {
-    return Vector<2, T>(scalar % v.x, 
-                        scalar % v.y);
+    return Vector<2, T>(lhs % v.x, 
+                        lhs % v.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator%(Vector<1, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator%(Vector<1, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x % v2.x
-                        v1.x % v2.y);
+    return Vector<2, T>(lhs.x % rhs.x,
+                        lhs.x % rhs.y);
 }
 template<typename T>
-inline constexpr Vector<2, T> operator%(Vector<2, T> const& v1, Vector<2, T> const& v2)
+inline constexpr Vector<2, T> operator%(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x % v2.y
-                        v1.y % v2.y);
+    return Vector<2, T>(lhs.x % rhs.x,
+                        lhs.y % rhs.y);
+}
+
+// TODO: create common computation header file a la compute_common.hpp and compute_vector_relational.hpp
+//       in order to have proper and portable floating point comparissons
+
+#include <limits>
+
+template <typename T>
+constexpr bool isEqual(T lhs, T rhs)
+{
+    if (std::numeric_limits<T>::is_iec559) // is type T a floating point type?
+    {   
+        T min = (fabs(lhs) > fabs(rhs) ? fabs(rhs) : fabs(lhs));
+        return (fabs(lhs - rhs) <= min * std::numeric_limits<T>::epsilon());
+    } 
+    else { return lhs == rhs;}
 }
 
 // Boolean operators
 template<typename T>
-inline constexpr bool operator==(Vector<2, T> const& v1, Vector<2, T> const& v2)
-{
-    return (v1.x == v2.x && v1.y == v2.y);
-}
-template<typename T>
-inline constexpr bool operator!=(Vector<2, T> const& v1, Vector<2, T> const& v2)
-{
-    return !(v1 == v2);
-}
-template<typename T>
-inline constexpr Vector<2, bool> operator&&(Vector<2, T> const& v1, Vector<2, T> const& v2)
+inline constexpr bool operator==(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
 {   
-    return Vector<2, bool>(v1.x && v2.x, v1.y && v2.y);
+
+        return (isEqual(lhs.x, rhs.x) && isEqual(lhs.y, rhs.y));
 }
 template<typename T>
-inline constexpr Vector<2, bool> operator||(Vector<2, T> const& v1, Vector<2, T> const& v2)
+inline constexpr bool operator!=(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
 {
-    return Vector<2, T>(v1.x || v2.x, v1.y || v2.y);
+    return !(lhs == rhs);
+}
+template<typename T>
+inline constexpr Vector<2, bool> operator&&(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
+{   
+    return Vector<2, bool>(lhs.x && rhs.x, lhs.y && rhs.y);
+}
+template<typename T>
+inline constexpr Vector<2, bool> operator||(Vector<2, T> const& lhs, Vector<2, T> const& rhs)
+{
+    return Vector<2, T>(lhs.x || rhs.x, lhs.y || rhs.y);
 }
