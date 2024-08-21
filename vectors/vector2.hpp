@@ -6,8 +6,9 @@
 template <typename T>
 struct Vector<2, T>
 {   
-    typedef Vector<2, T> Vector2;
+    typedef Vector<2, T> type;
     typedef T value_type;
+    typedef Vector<2, bool> bool_type;
 
     // Data
     union{T x, r, s;};
@@ -15,7 +16,7 @@ struct Vector<2, T>
     
     // Element count
     typedef length_t length_type;
-    static constexpr length_type length(){return 2};
+    static constexpr length_type length(){return 2;}
     
     //-------------------------------------
     // Template method declarations:
@@ -28,6 +29,7 @@ struct Vector<2, T>
     // Implicit basic constructors
     constexpr Vector() = default;
     constexpr Vector(Vector const& v) = default;
+    constexpr Vector(Vector<2, T> const& v);
 
     // Explicit basic constructors
     constexpr explicit Vector(T scalar);
